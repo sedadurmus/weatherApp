@@ -14,6 +14,9 @@ import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -77,6 +80,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     public static FirebaseUser mevcutKullanici;
     String mail, sifre;
     Button logout;
+    private long backPressedTime;
+    private Toast backToast;
+
 
     CompositeDisposable compositeDisposable;
     IOpenWeatherMap mService;
@@ -99,7 +105,32 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     private static final String KEY_ISNIGHTMODE = "isNightMode";
 
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu_main, menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch(item.getItemId()){
+            case   R.id.action_key:
+                new AlertDialog.Builder(MainActivity.this).setIcon(android.R.drawable.ic_dialog_alert).setTitle("Çıkış Yap")
+                        .setMessage("Çıkış yapmak istediğinize emin misiniz?")
+                        .setPositiveButton("Evet", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                FirebaseAuth.getInstance().signOut();
+                                Intent logoutIntent = new Intent(MainActivity.this, LoginActivity.class);
+                                startActivity(logoutIntent);
+                                finish();
+                            }
+                        }).setNegativeButton("Hayır", null).show();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     static MainActivity instance;
     public static MainActivity getInstance(){
@@ -108,10 +139,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         return instance;
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-    }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -158,8 +185,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        logout = findViewById(R.id.logoutBtn);
-//        wdata = findViewById(R.id.weeklyData);
+//        logout = findViewById(R.id.logoutBtn);
         cityName = findViewById(R.id.cityName);
         mAuth = FirebaseAuth.getInstance();
         mevcutKullanici = mAuth.getCurrentUser();
@@ -167,6 +193,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
 
 
+//aşağıdaki kodlarımı açtığımda retrofit ile ilgili hata alıyorum.
 //        compositeDisposable = new CompositeDisposable();
 //        Retrofit retrofit = Retrofitclient.getInstance();
 //        mService = retrofit.create(IOpenWeatherMap.class);
@@ -228,7 +255,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                     Address address = addressList.get(0);
                     LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
                     map.addMarker(new MarkerOptions().position(latLng).title(location));
-                    map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
+                    map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 7));
                 }
 
                 return false;
@@ -255,24 +282,20 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                     String main = "";
                     String description = "";
                     String temperature = "";
-//                    String wind = "";
 
                     for (int i = 0; i < array.length(); i++) {
                         JSONObject weatherPart = array.getJSONObject(i);
                         main = weatherPart.getString("main");
                         description = weatherPart.getString("description");
-//                        wind = weatherPart.getString("wind");
                     }
                     JSONObject mainPart = new JSONObject(mainTemperature);
                     temperature = mainPart.getString("temp");
                     Log.i("temperature", temperature);
 
-//                    wdata.setText( temperature + " °C" + "\n" + main + "\n" + description + "\n" );
-
                     txt_city_name.setText(main + " ");
                     txt_description.setText(description + " ");
                     txt_temperature.setText(temperature + " °C" );
-//                    txt_wind.setText(wind + " ")
+                    img_weather.setVisibility(View.VISIBLE);
                     getForecastWeatherInformation(cityName.toString());
 
                 } catch (Exception e) {
@@ -305,23 +328,23 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             Toast.makeText(this, "Lütfen giriş yapın veya kaydolun", Toast.LENGTH_SHORT).show();
         }
 
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                new AlertDialog.Builder(MainActivity.this).setIcon(android.R.drawable.ic_dialog_alert).setTitle("Çıkış Yap")
-                        .setMessage("Çıkış yapmak istediğinize emin misiniz?")
-                        .setPositiveButton("Evet", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                FirebaseAuth.getInstance().signOut();
-                                Intent logoutIntent = new Intent(MainActivity.this, LoginActivity.class);
-                                startActivity(logoutIntent);
-                                finish();
-                            }
-                        }).setNegativeButton("Hayır", null).show();
-            }
-        });
+//        logout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                new AlertDialog.Builder(MainActivity.this).setIcon(android.R.drawable.ic_dialog_alert).setTitle("Çıkış Yap")
+//                        .setMessage("Çıkış yapmak istediğinize emin misiniz?")
+//                        .setPositiveButton("Evet", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which) {
+//                                FirebaseAuth.getInstance().signOut();
+//                                Intent logoutIntent = new Intent(MainActivity.this, LoginActivity.class);
+//                                startActivity(logoutIntent);
+//                                finish();
+//                            }
+//                        }).setNegativeButton("Hayır", null).show();
+//            }
+//        });
 
     }
 
@@ -346,6 +369,24 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         );
     }
+
+
+
+    @Override
+    public void onBackPressed() {
+        if (backPressedTime + 2000 > System.currentTimeMillis()) {
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_HOME);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            backToast.cancel();
+        } else {
+            backToast = Toast.makeText(getBaseContext(), "Çıkmak için iki kere basınız", Toast.LENGTH_SHORT);
+            backToast.show();
+        }
+        backPressedTime = System.currentTimeMillis();
+    }
+
 
     private void displayForecastWeather(WeatherForecastResult weatherForecastResult) {
         txt_city.setText(new StringBuilder(weatherForecastResult.city.name));

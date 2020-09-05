@@ -3,13 +3,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:menu="@menu/resource"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     xmlns:custom="http://schemas.android.com/apk/res-auto"
     tools:context=".MainActivity"
-    android:orientation="vertical"
-    android:id="@+id/root_view">
+    android:orientation="vertical">
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -17,96 +15,56 @@
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <com.google.android.material.appbar.AppBarLayout
-                android:id="@+id/appbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="16dp"
-                android:theme="@style/AppTheme">
-
-                <androidx.appcompat.widget.Toolbar
-                    android:id="@+id/toolbar"
-                    android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize"
-                    android:background="?attr/colorPrimary"
-                    app:layout_scrollFlags="scroll|enterAlways"
-                    app:popupTheme="@style/AppTheme">
-
-                    <Switch
-                        android:id="@+id/switchCompat"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="25dp"
-                        android:checked="false"
-                        android:padding="10dp"
-                        android:text="@string/text"
-                        android:textStyle="bold"
-                        app:switchPadding="10dp"
-                        tools:ignore="UseSwitchCompatOrMaterialXml" />
-                </androidx.appcompat.widget.Toolbar>
-            </com.google.android.material.appbar.AppBarLayout>
-
-            <RelativeLayout
+            <LinearLayout
                 android:id="@+id/relativeLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:orientation="horizontal"
                 tools:ignore="MissingConstraints">
 
                 <SearchView
                     android:id="@+id/cityName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_toStartOf="@+id/logoutBtn"
-                    android:elevation="5dp"
-                    android:iconifiedByDefault="false"
-                    android:queryHint="Şehir Seç" />
-
-                <Button
-                    android:id="@+id/logoutBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="20dp"
-                    android:background="@drawable/btn_login"
-                    android:text="@string/logoutBtn"
-                    android:textColor="#FFF"
-                    tools:ignore="MissingConstraints" />
-            </RelativeLayout>
+                    android:elevation="5dp"
+                    android:iconifiedByDefault="false"
+                    android:queryHint="Şehir Seç"
+                    android:text="@string/text"
+                    android:textColor="@color/textColor" />
+
+                <Switch
+                    android:id="@+id/switchCompat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:layout_marginEnd="5dp"
+                    android:padding="10dp"
+                    android:text="@string/text"
+                    android:textStyle="bold"
+                    app:switchPadding="10dp"
+                    android:textColor="@color/textColor"
+                    tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+
+            </LinearLayout>
 
 
             <fragment
                 android:id="@+id/google_map"
                 android:name="com.google.android.gms.maps.SupportMapFragment"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:layout_marginTop="20dp"
-                tools:ignore="MissingConstraints" />
-
-            <TextView
-                android:id="@+id/weeklyData"
-                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="10dp"
-                android:text="haftalık veri"
-                android:textColor="@color/textColor"
-                android:textSize="25dp"
                 tools:ignore="MissingConstraints" />
 
             <!-- Today -->
             <LinearLayout
-                android:visibility="gone"
-                android:id="@+id/weather_panel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:baselineAligned="false"
                 android:orientation="horizontal"
                 android:padding="16dp">
 
@@ -120,7 +78,6 @@
                         android:id="@+id/txt_city_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Ankara"
                         android:textColor="@color/textColor"
                         android:textSize="24sp" />
 
@@ -129,7 +86,6 @@
                         android:id="@+id/txt_temperature"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="25 C"
                         android:textColor="@color/textColor"
                         android:textSize="36sp"
                         android:textStyle="bold" />
@@ -184,8 +140,9 @@
                         android:id="@+id/img_weather"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:layout_gravity="center_horizontal"
-                        android:src="@mipmap/ic_launcher" />
+                        android:layout_gravity="end"
+                        android:src="@drawable/ic_sunny"
+                        android:visibility="gone"/>
 
                     <TextView
                         android:id="@+id/txt_description"
@@ -204,10 +161,11 @@
                 android:id="@+id/small_talk"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorPrimary"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
                 android:paddingBottom="16dp"
+                android:textStyle="bold"
+                android:text="Hava Durumu"
                 android:textColor="@color/textColor"
                 android:textSize="18sp" />
 
@@ -217,18 +175,27 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <!-- Future Weather -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_forecast"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
             </LinearLayout>
 
 
         </LinearLayout>
 
+
+
     </ScrollView>
 
-    <ProgressBar
-        android:id="@+id/loading"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        />
+<!--    <ProgressBar-->
+<!--        android:id="@+id/loading"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_centerInParent="true"-->
+<!--        android:indeterminate="true"-->
+<!--        app:layout_anchor="@+id/scrollView2"-->
+<!--        app:layout_anchorGravity="center" />-->
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

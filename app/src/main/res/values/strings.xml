@@ -1,14 +1,15 @@
 <resources>
-    <string name="app_name">weatherApp</string>
+    <string name="app_name">WeathsApp</string>
     <string name="loginBtn">Giriş Yap</string>
     <string name="logoutBtn">Çıkış Yap</string>
     <string name="registerBtn">Kaydol</string>
+    <string name="dayNight">Gece Modu</string>
     <string name="sifreUnut">Şifremi Unuttum!</string>
     <string name="kaydolTxt">Mevcut hesabın yok mu? Kaydolun..</string>
     <string name="girisTxt">Mevcut hesabın var mı? Giriş Yap..</string>
     <string name="map_key" translatable="false">AIzaSyBPxAnzkAS9o-AbfjtPw-5czRRxEI14l3k</string>
 
-    <string name="text">Light Mode</string>
+    <string name="text">Gündüz Modu</string>
 
 
     <string name="current_location_description">Current location</string>

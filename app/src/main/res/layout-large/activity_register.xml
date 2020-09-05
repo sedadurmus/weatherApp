@@ -5,65 +5,81 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20dp"
     android:background="@drawable/background"
-    tools:context=".LoginActivity">
+    android:padding="20dp"
+    tools:context=".RegisterActivity"
+    android:gravity="center">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/AdiTIL"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/emailTIL"
             android:layout_marginTop="250dp">
-
             <EditText
-                android:id="@+id/emailEt"
-                android:inputType="textEmailAddress"
-                android:hint="Email"
+                android:id="@+id/edt_Ad"
+                android:inputType="text"
+                android:textSize="20sp"
+                android:hint="Adınız"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/emailTIL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp">
+            <EditText
+                android:id="@+id/edt_email"
+                android:inputType="textEmailAddress"
+                android:hint="Email"
+                android:textSize="20sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:id="@+id/passwordTIL"
             app:passwordToggleEnabled="true">
 
             <EditText
-                android:id="@+id/passwordEt"
+                android:id="@+id/edt_sifre"
                 android:inputType="textPassword"
                 android:hint="Şifre"
+                android:textSize="20sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/login_btn"
-            android:layout_width="200dp"
+            android:id="@+id/btn_kaydol_activity"
+            android:layout_width="290dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="35dp"
+            android:textSize="25sp"
             android:layout_gravity="center"
-            android:layout_marginTop="50dp"
-            android:layout_height="wrap_content"
-            android:textColor="#fff"
             android:background="@drawable/btn_login"
-            android:text="@string/loginBtn" />
-
-
+            android:text="@string/registerBtn"
+            android:textColor="#fff"/>
 
     </LinearLayout>
     <TextView
-        android:id="@+id/nothave_accountTv"
-        android:text="@string/kaydolTxt"
+        android:id="@+id/txt_girisSayfasina_git"
+        android:text="@string/girisTxt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="#fff"
         android:layout_gravity="bottom"
-        android:textColor="#FFF"
+        android:textSize="25sp"
         android:gravity="center"
         android:layout_alignParentBottom="true"/>
-
 </RelativeLayout>

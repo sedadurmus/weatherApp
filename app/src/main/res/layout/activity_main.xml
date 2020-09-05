@@ -19,63 +19,38 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <com.google.android.material.appbar.AppBarLayout
-                android:id="@+id/appbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:theme="@style/AppTheme">
-
-                <androidx.appcompat.widget.Toolbar
-                    android:id="@+id/toolbar"
-                    android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize"
-                    app:layout_scrollFlags="scroll|enterAlways"
-                    app:popupTheme="@style/AppTheme">
-
-                    <Switch
-                        android:id="@+id/switchCompat"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="25dp"
-                        android:checked="false"
-                        android:padding="10dp"
-                        android:text="@string/text"
-                        android:textStyle="bold"
-                        app:switchPadding="10dp"
-                        tools:ignore="UseSwitchCompatOrMaterialXml" />
-                    <Button
-                        android:id="@+id/logoutBtn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginEnd="1dp"
-                        android:background="@drawable/btn_login"
-                        android:text="@string/logoutBtn"
-                        android:textColor="#FFF"
-                        tools:ignore="MissingConstraints" />
-
-                </androidx.appcompat.widget.Toolbar>
-            </com.google.android.material.appbar.AppBarLayout>
-
-            <RelativeLayout
+            <LinearLayout
                 android:id="@+id/relativeLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:theme="@style/AppTheme"
+                android:orientation="horizontal"
                 tools:ignore="MissingConstraints">
 
                 <SearchView
                     android:id="@+id/cityName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
+                    android:layout_width="239dp"
+                    android:layout_height="match_parent"
                     android:elevation="5dp"
                     android:iconifiedByDefault="false"
-                    android:queryHint="Şehir Seç" />
+                    android:queryHint="Şehir Seç"
+                    android:text="@string/text"
+                    android:textColor="@color/textColor" />
+
+                <Switch
+                    android:id="@+id/switchCompat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:layout_marginEnd="5dp"
+                    android:padding="10dp"
+                    android:text="@string/text"
+                    android:textStyle="bold"
+                    app:switchPadding="10dp"
+                    android:textColor="@color/textColor"
+                    tools:ignore="UseSwitchCompatOrMaterialXml" />
 
 
-            </RelativeLayout>
+            </LinearLayout>
 
 
             <fragment
@@ -86,36 +61,10 @@
                 android:layout_marginTop="20dp"
                 tools:ignore="MissingConstraints" />
 
-<!--            <TextView-->
-<!--                android:id="@+id/weeklyData"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_gravity="bottom"-->
-<!--                android:layout_marginLeft="10dp"-->
-<!--                android:layout_marginTop="20dp"-->
-<!--                android:layout_marginRight="10dp"-->
-<!--                android:text="haftalık veri"-->
-<!--                android:textColor="@color/textColor"-->
-<!--                android:textSize="25dp"-->
-<!--                tools:ignore="MissingConstraints" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/hava"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_gravity="bottom"-->
-<!--                android:layout_marginLeft="10dp"-->
-<!--                android:layout_marginTop="20dp"-->
-<!--                android:layout_marginRight="10dp"-->
-<!--                android:text="haftalık veri"-->
-<!--                android:textColor="@color/textColor"-->
-<!--                android:textSize="25dp"-->
-<!--                tools:ignore="MissingConstraints" />-->
             <!-- Today -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:theme="@style/AppTheme"
                 android:baselineAligned="false"
                 android:orientation="horizontal"
                 android:padding="16dp">
@@ -193,7 +142,8 @@
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:layout_gravity="end"
-                        android:src="@drawable/ic_sunny" />
+                        android:src="@drawable/ic_sunny"
+                        android:visibility="gone"/>
 
                     <TextView
                         android:id="@+id/txt_description"
@@ -212,11 +162,11 @@
                 android:id="@+id/small_talk"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:theme="@style/AppTheme"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
                 android:paddingBottom="16dp"
-                android:text="5 Günlük Hava Durumu"
+                android:textStyle="bold"
+                android:text="Hava Durumu"
                 android:textColor="@color/textColor"
                 android:textSize="18sp" />
 
