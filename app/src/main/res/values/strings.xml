@@ -1,0 +1,61 @@
+<resources>
+    <string name="app_name">weatherApp</string>
+    <string name="loginBtn">Giriş Yap</string>
+    <string name="logoutBtn">Çıkış Yap</string>
+    <string name="registerBtn">Kaydol</string>
+    <string name="sifreUnut">Şifremi Unuttum!</string>
+    <string name="kaydolTxt">Mevcut hesabın yok mu? Kaydolun..</string>
+    <string name="girisTxt">Mevcut hesabın var mı? Giriş Yap..</string>
+    <string name="map_key" translatable="false">AIzaSyBPxAnzkAS9o-AbfjtPw-5czRRxEI14l3k</string>
+
+    <string name="text">Light Mode</string>
+
+
+    <string name="current_location_description">Current location</string>
+    <string-array name="weather_group_2xx">
+        <item>I hope you like lightning</item>
+        <item>There\'s a storm coming Mr. Wayne</item>
+        <item>A thunderstorm! Stay inside!</item>
+        <item>Jheez Thor, calm down</item>
+        <item>I\'m sure you didn\'t want to go outside anyway</item>
+    </string-array>
+    <string-array name="weather_group_3xx">
+        <item>Tut tut tut, looks like rain</item>
+        <item>Take an umbrella!</item>
+        <item>Take a raincoat!</item>
+    </string-array>
+    <string-array name="weather_group_5xx">
+        <item>Great weather to be a duck!</item>
+        <item>It\'s raining. Hooray!</item>
+        <item>Rain. Maybe you should have brought a boat</item>
+    </string-array>
+    <string-array name="weather_group_6xx">
+        <item>Brrrr. Pretty cold outside</item>
+        <item>Do you want to build a snowman?</item>
+        <item>Snow! Let\'s go sledging!</item>
+        <item>Winter is coming</item>
+    </string-array>
+    <string-array name="weather_group_7xx">
+        <item>Careful, visibility might not be great</item>
+    </string-array>
+    <string-array name="weather_group_800">
+        <item>Lovely clear skies!</item>
+        <item>Not a cloud in sight</item>
+        <item>Where did the clouds go?</item>
+    </string-array>
+    <string-array name="weather_group_80x">
+        <item>Cloudy with a chance of meatballs</item>
+        <item>Darn clouds, blocking all our sun</item>
+    </string-array>
+    <string-array name="weather_group_90x">
+        <item>This weather is mad!</item>
+        <item>Weather was turned up to 11</item>
+    </string-array>
+    <string-array name="weather_group_9xx">
+        <item>Whoooosh goes the wind</item>
+        <item>Seems a little blowy outside</item>
+    </string-array>
+    <string name="title_activity_maps">Location Select</string>
+
+
+</resources>
